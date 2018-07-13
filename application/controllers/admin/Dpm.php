@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dpm extends CI_Controller
 {
+	function __construct()
+	{
+		parent::__construct();
+
+		//load session login
+		$this->genlib->checkAdmin();
+	}
 	
 	public function index()
 	{

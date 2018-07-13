@@ -1,5 +1,4 @@
 </div>
-<script src="<?php echo base_url(); ?>assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/ckeditor/ckeditor.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/ckeditor/config.js"></script>

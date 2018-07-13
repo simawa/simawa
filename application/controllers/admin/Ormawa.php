@@ -3,6 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ormawa extends CI_Controller
 {
+	function __construct()
+	{
+		parent::__construct();
+
+		//load session login
+		$this->genlib->checkAdmin();
+	}
+	
 	public function index()
 	{
 		$data = array(

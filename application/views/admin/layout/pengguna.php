@@ -223,7 +223,7 @@
 										$id = $key->id;
 										$nama = $key->nama;
 										?>
-										<option value="<?=$id?>"><?=$nama?></option>
+										<option value="<?=$id?>" <?php if($id == $id){ echo 'selected="selected"'; } ?>><?=$nama?></option>
 									<?php
 									}
 									?>

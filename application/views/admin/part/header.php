@@ -76,6 +76,9 @@
                             <i class="fa fa-map-marker"></i> Tempat Kegiatan
                         </a>
                     </li>
+                    <li>
+                        <a  style="color: #fff" href="<?= site_url('admin/admin/logout') ?>"><i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
                 </ul>
             </div>
         </nav>

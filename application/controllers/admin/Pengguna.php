@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pengguna extends CI_Controller
 {
+	function __construct()
+	{
+		parent::__construct();
+
+		//load session login
+		$this->genlib->checkAdmin();
+	}
 	
 	public function index()
 	{
@@ -64,7 +71,7 @@ class Pengguna extends CI_Controller
 		$this->form_validation->set_rules('nim','nim','required');
 		$nim['nim'] = $this->input->post('nim');
 		if ($this->form_validation->run()==TRUE) {
-			$insert = array(
+			$update = array(
 				'nim' => $this->input->post('nim'),
 				'nama' => $this->input->post('nama'),
 				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
@@ -76,7 +83,7 @@ class Pengguna extends CI_Controller
 				'id_role' => $this->input->post('id_role')
 			);
 			//Simpan kedalam tabel user_ormawa
-			$this->db->update('user_ormawa', $insert, $nim);
+			$this->db->update('user_ormawa', $update, $nim);
 			$this->session->set_flashdata('success_upload', "<script>
 				swal({
 				  position: 'top-end',

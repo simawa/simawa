@@ -51,6 +51,14 @@
                             <i class="fa fa-laptop"></i> Ormawa
                         </a>
                     </li>
+                    <li  class="<?= $Title == 'profil' ? 'active' : '' ?>">
+                        <a href="<?= site_url('ormawa/ormawa/profil') ?>" style="color: #fff">
+                            <i class="fa fa-user"></i> Ormawa
+                        </a>
+                    </li>
+                    <li>
+                        <a  style="color: #fff" href="<?= site_url('ormawa/ormawa/logout') ?>"><i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
                 </ul>
             </div>
         </nav>

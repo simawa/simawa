@@ -7,50 +7,26 @@
 				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-tambah">
 				<i class="fa fa-archive"></i> Tambah Pengajuan
 				</button>
-				<?php $this->session->userdata('ormawa_nim'); ?>
 			</div>
 			<div class="box-body">
 				<div class="table-responsive">
 					<table class="table table-bordered" id="data-tables">
 						<thead>
 							<tr class="bg-blue">
+								<th>ID</th>
 								<th>Nama Kegiatan</th>
-								<th>Nama Ormawa</th>
 								<th>Option</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php 
-							foreach ($data as $row) {
-								$id = $row->id_pengajuan;
-								$nama_kegiatan = $row->nama_kegiatan;
-								$tema_kegiatan = $row->tema_kegiatan;
-								$tujuan = $row->tujuan;
-								$sasaran = $row->sasaran;
-								$bentuk_kegiatan = $row->bentuk_kegiatan;
-								$tgl1 = $row->tgl1;
-								$jam1 = $row->jam1;
-								$tgl2 = $row->tgl2;
-								$jam2 = $row->jam2;
-								$rencana_dana = $row->rencana_dana;
-								$id_tempat_kegiatan = $row->id_tempat_kegiatan;
-								$id_ormawa = $row->id_ormawa;
-								$id_user = $row->id_user;
-								$status_dpm = $row->status_dpm;
-								$keterangan_dpm = $row->keterangan_dpm;
-								$status_kemahasiswaan = $row->status_kemahasiswaan;
-								$keterangan_kemahasiswaan = $row->keterangan_kemahasiswaan;
-								$nama_ormawa = $row->nama_ormawa;
-							?>
 							<tr>
-								<td><?= $nama_kegiatan;?></td>
-								<td><?= $nama_ormawa;?></td>
+								<td>1</td>
+								<td>2</td>
 								<td>
-									<button class="btn btn-success" type="button" data-toggle="modal" data-placement="top" title="Edit" data-target="#modal-edit" onclick="edit_pengajuan('<?= $id ?>','<?= $nama_kegiatan ?>','<?= $tema_kegiatan ?>','<?= $tujuan ?>','<?= $sasaran ?>','<?= $bentuk_kegiatan ?>','<?= $tgl1 ?>','<?= $jam1 ?>','<?= $tgl2 ?>','<?= $jam2 ?>','<?= $rencana_dana ?>','<?= $id_tempat_kegiatan ?>','<?= $id_ormawa ?>','<?= $id_user ?>')"><i class="fa fa-pencil"></i></button>
-									<button class="btn btn-danger" type="button" data-toggle="modal" data-placement="top" title="Hapus" data-target="#modal-hapus" onclick="hapus_pengajuan('<?= $id ?>')"><i class="fa fa-trash"></i></button>
+									<button class="btn btn-success" type="button" data-toggle="modal" data-placement="top" title="Edit" data-target="#modal-edit" onclick="edit_pengajuan()"><i class="fa fa-pencil"></i></button>
+									<button class="btn btn-danger" type="button" data-toggle="modal" data-placement="top" title="Hapus" data-target="#modal-hapus" onclick="hapus_pengajuan()" ><i class="fa fa-trash"></i></button>
 								</td>
 							</tr>
-						<?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -58,7 +34,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- Modal Tambah -->
 <div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
@@ -68,7 +43,7 @@
 					<div class="box-header">
 						<div class="box-footer bg-blue">
 							<h4 class="pull-left" style="color: #fff;"><i class="fa fa-archive"></i> Tambah Pengajuan</h4>
-						</div>
+					</div>
 					</div>
 					<div class="box-body">
 						<input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" style="display: none">
@@ -99,6 +74,7 @@
 						<div class="form-group">
 							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Bentuk Kegiatan</label>
 							<div class="col-md-10 col-sm-10 col-xs-10">
+								<!-- <input type="text" class="form-control" name="tujuan" required=""> -->
 								<select name="bentuk_kegiatan" class="form-control" required="">
 									<option value=""></option>
 									<option value="Lomba" name="">Lomba</option>
@@ -155,16 +131,15 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">ID Ormawa</label>
+							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Ormawa</label>
 							<div class="col-md-10 col-sm-10 col-xs-10">
-								<input type="text" class="form-control" name="id_ormawa" value="<?= $this->session->userdata('ormawa_id');?>" readonly>
+								<input type="text" class="form-control" name="id_ormawa" required="" value="Sesuai Session id_ormawa">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">ID Pengguna</label>
+							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Nama Pengguna</label>
 							<div class="col-md-10 col-sm-10 col-xs-10">
-								<input type="text" class="form-control" name="id_user" 
-								value="<?= $this->session->userdata('ormawa_nim');?>" readonly>
+								<input type="text" class="form-control" name="id_user" required="" value="Sesuai Session Nama/Nim Ormawa">
 							</div>
 						</div>
 					</div>
@@ -183,13 +158,12 @@
 		</div>
 	</div>
 </div>
-
 <!-- Modal Edit -->
 <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
-				<form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?= base_url('ormawa/ormawa/edit')?>">
+				<form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?= base_url('admin/ormawa/edit')?>">
 					<div class="box-header">
 						<div class="box-footer bg-blue">
 							<h4 class="pull-left" style="color: #fff;"><i class="fa fa-archive"></i> Edit Pengajuan</h4>
@@ -230,6 +204,7 @@
 						<div class="form-group">
 							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Bentuk Kegiatan</label>
 							<div class="col-md-10 col-sm-10 col-xs-10">
+								<!-- <input type="text" class="form-control" name="tujuan" id="" required=""> -->
 								<select name="bentuk_kegiatan" class="form-control" id="edit_bentuk_kegiatan" required="">
 									<option value=""></option>
 									<option value="Lomba" name="">Lomba</option>
@@ -288,50 +263,55 @@
 						<div class="form-group">
 							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Ormawa</label>
 							<div class="col-md-10 col-sm-10 col-xs-10">
-								<input type="text" class="form-control" name="id_ormawa" id="edit_id_ormawa" required="" value="Sesuai Session id_ormawa" readonly="">
+								<input type="text" class="form-control" name="id_ormawa" id="id_ormawa" required="" value="Sesuai Session id_ormawa" readonly="">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Nama Pengguna</label>
 							<div class="col-md-10 col-sm-10 col-xs-10">
-								<input type="text" class="form-control" name="id_user" id="edit_id_user" required="" readonly="">
+								<input type="text" class="form-control" name="id_user" id="edit_id_user" required="" value="Sesuai Session Nama/Nim Ormawa" readonly="">
 							</div>
 						</div>
-					</div>
-					<div class="box-footer">
-						<div class="btn-group btn-group-sm pull-right">
-							<button id="btn_edit" name="btn_submit" type="submit" class="btn btn-success ajax-loader">
-							<i class="fa fa-check"></i> Simpan
-							</button>
-							<button data-dismiss="modal" type="button" class="btn btn-danger" aria-label="Close">
-							<i class="fa fa-times"></i> Batal
-							</button>
+						<div class="box-footer">
+							<div class="btn-group btn-group-sm pull-right">
+								<button id="btn_edit" name="btn_submit" type="submit" class="btn btn-success ajax-loader">
+								<i class="fa fa-check"></i> Simpan
+								</button>
+								<button data-dismiss="modal" type="button" class="btn btn-danger" aria-label="Close">
+								<i class="fa fa-times"></i> Batal
+								</button>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-<!-- Modal Hapus -->
-<div class="modal fade" id="modal-hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-body">
-				<form class="form-horizontal" method="post" enctype="multipart/form-data" action="<?= base_url('ormawa/ormawa/delete')?>">
-					<div class="box-header">
-						<div class="box-footer bg-blue">
-							<h4 class="pull-left" style="color: #fff;"><i class="fa fa-archive"></i> Hapus Pengajuan</h4>
-						</div>
-					</div>
-					<div class="box-body">
-						<input type="text" name="hapus_id" id="hapus_id">
+	<!-- Modal Detail -->
+	<div class="modal fade" id="ModalDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-xl" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-blue">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title"><i class="fa fa-archive"></i> Detail Pengajuan</h4>
+				</div>
+				<div class="modal-body" id="IsiModal">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Hapus -->
+	<div class="modal fade" id="modal-hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<form method="post">
+					<div class="modal-body">
+						<input type="hidden" name="hapus_id" id="hapus_id">
 						Anda Yakin Ingin Menghapus Data Ini ?
 					</div>
-					<div class="box-footer">
+					<div class="modal-footer bg-blue">
 						<div class="btn-group btn-group-sm pull-right">
-							<button id="btn_hapus" name="btn_submit" type="submit" class="btn btn-success ajax-loader">
+							<button id="btn_hapus" name="btn_hapus" formaction="<?= base_url('admin/ormawa/delete'); ?>" type="submit" class="btn btn-success ajax-loader">
 							<i class="fa fa-check"></i> Simpan
 							</button>
 							<button data-dismiss="modal" type="button" class="btn btn-danger" aria-label="Close">
@@ -343,8 +323,7 @@
 			</div>
 		</div>
 	</div>
-</div>
-<script>
+	<script>
 		function edit_pengajuan(a,b,c,d,e,f,g,h,i,j,k,l,m,n) {
 			$('#edit_id').val(a);
 			$('#edit_nama_kegiatan').val(b);

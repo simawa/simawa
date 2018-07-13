@@ -14,33 +14,33 @@ class Login extends CI_Controller {
 	public function index()
 	{
 	
-	 if($this->m_admin->logged_in())
+	 if($this->m_pengguna->logged_in())
         {
             //redirect dahsboard
-            redirect('admin/admin/');
+            redirect('ormawa/ormawa');
 
         }else {
 		//Cek Form Validasi
-		$this->form_validation->set_rules('email', 'email', 'trim|required');
+		$this->form_validation->set_rules('nim', 'nim', 'trim|required');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
 		
 		if ($this->form_validation->run() == TRUE) {
-			$email = $this->input->post("email");
+			$nim = $this->input->post("nim");
 			$password = $this->input->post('password');
 			//checking data via model
-			$checking = $this->apps->cek_user('admin', array('email' => $email), array('password' => $password));
+			$checking = $this->apps->cek_user('user_ormawa', array('nim' => $nim), array('password' => $password));
 			//jika ditemukan, maka create session
 			if ($checking == TRUE) {
 				foreach ($checking as $user) {
 						$session_data = array(
-						'admin_id'          => $user->id_admin,
-						'admin_nama'        => $user->nama,
-						'admin_email'       => $user->email,
-						'admin_password'        => $user->password
+						'ormawa_nim'          => $user->nim,
+						'ormawa_nama'        => $user->nama,
+						'ormawa_jabatan'       => $user->jabatan,
+						'ormawa_id'       		=> $user->id_ormawa,
 						);
 						$this->CI->session->set_userdata($session_data);
 						//return TRUE;
-						redirect('admin/admin');
+						redirect('ormawa/ormawa');
 						}
 			}else {
 				$data = array(
@@ -51,7 +51,7 @@ class Login extends CI_Controller {
 				swal({
 				  position: 'top-end',
 				  type: 'warning',
-				  title: 'Email Atau Password Salah',
+				  title: 'Nim Atau Password Salah',
 				  showConfirmButton: false,
 				  timer: 2000
 				})
@@ -72,7 +72,7 @@ class Login extends CI_Controller {
 				})
 			</script>");
 			}
-			$this->load->view('admin/layout/login', $data);
+			$this->load->view('ormawa/layout/login', $data);
 		}
 	}
 }
