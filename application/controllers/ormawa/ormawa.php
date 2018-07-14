@@ -144,7 +144,7 @@ class Ormawa extends CI_Controller
 
 	public function profil()
 	{
-		$nim = $this->session->userdata('ormawa_nim');
+		$nim['nim'] = $this->session->userdata('ormawa_nim');
 		$this->form_validation->set_rules('nim','nim','required');
 		if ($this->form_validation->run() == TRUE) {
 			$update = array(
@@ -154,15 +154,13 @@ class Ormawa extends CI_Controller
 				'jabatan' => $this->input->post('jabatan'),
 				'id_ormawa' => $this->input->post('id_ormawa'),
 				'password' => $this->input->post('password'),
-				'status' => $this->input->post('status'),
-				'telp' => $this->input->post('telp'),
-				'id_role' => $this->input->post('id_role')
+				'telp' => $this->input->post('telp')
 			);
 			
-			$this->db->select($update, $nim);
+			$simpan = $this->db->update('user_ormawa', $update, $nim);
+			
 			if ($simpan) {
 				//Simpan kedalam tabel user_ormawa
-				$this->db->update('user_ormawa', $update, $nim);
 				$this->session->set_flashdata('success_upload', "<script>
 				swal({
 				  position: 'top-end',
@@ -173,7 +171,7 @@ class Ormawa extends CI_Controller
 				})
 			</script>");
 			//redirect
-			redirect('ormawa/ormawa');
+			redirect('ormawa/ormawa/profil');
 			}else{
 				$this->session->set_flashdata('error_upload', "<script>
 				swal({
@@ -188,9 +186,11 @@ class Ormawa extends CI_Controller
 			redirect('ormawa/ormawa');
 		}
 		}else{
+			$nim = $this->session->userdata('ormawa_nim');
 			$data = array(
 			'page' => 'profil',
 			'Title'	=> 'Edit Profil',
+			'ormawa' => $this->m_ormawa->data(),
 			'data' => $this->m_pengguna->profil($nim)
 		);
 			$this->load->view('ormawa/template', $data);  

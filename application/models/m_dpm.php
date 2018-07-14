@@ -11,4 +11,10 @@ class m_dpm extends CI_Model
             ->get();
         return $query->result();
     }
+
+    //fungsi restrict halaman
+	function logged_in()
+	{
+    return $this->session->userdata('dpm_nim');
+	}
 }

@@ -12,8 +12,14 @@ class m_pengguna extends CI_Model
 
 	function profil($nim)
 	{
-		$query = $this->db->query("SELECT user_o.*, user_o.nama as nama_pengguna, orma.*, orma.nama as nama_ormawa FROM user_ormawa as user_o LEFT JOIN ormawa as orma ON user_o.id_ormawa = orma.id WHERE nim = '.$nim.'");
-		return $query->result();
+		$query = $this->db->query("SELECT user_o.*, user_o.nama as nama_pengguna, orma.*, orma.nama as nama_ormawa FROM user_ormawa as user_o LEFT JOIN ormawa as orma ON user_o.id_ormawa = orma.id WHERE user_o.nim = $nim");
+		if($query->num_rows() > 0)
+        {
+            return $query->row();
+        }else
+        {
+            return NULL;
+        }
 	}
 
 	//fungsi restrict halaman

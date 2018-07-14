@@ -23,7 +23,49 @@
         <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datepicker/datepicker3.css">
         <script src="<?php echo base_url(); ?>assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
-    
+        <style>
+        .example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+        }
+        .example-modal .modal {
+        background: transparent !important;
+        }
+        .latestStuffsBody {
+        font-size: 3em;
+        color: #fff;
+        height: 100px;
+        }
+        .latestStuffsText {
+        font-size: 15px;
+        }
+        @media (min-width: 768px) {
+        .modal-xl {
+        width: 90%;
+        max-width:1200px;
+        }
+        }
+        .loading-icon {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        margin:50px auto;
+        -webkit-animation: fa-spin 2s infinite linear;
+        animation: fa-spin 2s infinite linear;
+        }
+        .loading-icon:before {
+        content: "\f110";
+        font-family: FontAwesome;
+        font-size:20px;
+        position: absolute;
+        top: 0;
+        }
+        </style>
     </head>
     <body style="padding-top:60px;">
         <nav class="navbar navbar-inverse navbar-fixed-top bg-blue" style="-moz-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);">
@@ -46,9 +88,14 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li  class="<?= $Title == 'dpm' ? 'active' : '' ?>">
+                    <li  class="<?= $Title == 'Dpm' ? 'active' : '' ?>">
                         <a href="<?= site_url('dpm/dpm') ?>" style="color: #fff">
                             <i class="fa fa-laptop"></i> Dpm
+                        </a>
+                    </li>
+                    <li  class="<?= $Title == 'Logout' ? 'active' : '' ?>">
+                        <a href="<?= site_url('dpm/dpm/logout') ?>" style="color: #fff">
+                            <i class="fa fa-sign-out"></i> Logout
                         </a>
                     </li>
                 </ul>
