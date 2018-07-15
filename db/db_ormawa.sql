@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2018 at 04:18 AM
+-- Generation Time: Jul 13, 2018 at 02:52 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -19,6 +19,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_ormawa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id_admin` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `nama`, `email`, `password`) VALUES
+(1, 'admin', 'admin@gmail.com', 'admin');
 
 -- --------------------------------------------------------
 
@@ -84,7 +104,7 @@ CREATE TABLE `ormawa` (
 --
 
 INSERT INTO `ormawa` (`id`, `nama`) VALUES
-(1531133283, 'Pramuka'),
+(1531133283, 'Penalaran'),
 (1531133298, 'Nahkoda');
 
 -- --------------------------------------------------------
@@ -119,7 +139,8 @@ CREATE TABLE `pengajuan_kegiatan` (
 --
 
 INSERT INTO `pengajuan_kegiatan` (`id`, `nama_kegiatan`, `tema_kegiatan`, `tujuan`, `sasaran`, `bentuk_kegiatan`, `tgl1`, `jam1`, `tgl2`, `jam2`, `rencana_dana`, `id_tempat_kegiatan`, `id_ormawa`, `id_user`, `status_dpm`, `keterangan_dpm`, `status_kemahasiswaan`, `keterangan_kemahasiswaan`) VALUES
-(1531210834, 'Pengajian', 'Religi', 'Emboh ', 'Wong Akeh', 'Seminar', '2020-03-02', '00:03:00', '2019-02-02', '01:05:00', 'Rp.1325', 0, 0, 0, 0, '', 0, '');
+(1531468809, 'Shalat Ied & Qurban', 'Religi', 'Sebagai Syiar Islam', 'Mahasiswa dan Masyarakat Sekitar', 'Seminar', '2018-07-29', '07:00:00', '2018-07-31', '09:00:00', 'Rp.13252134', 1531132916, 1531133298, 544, 0, '', 0, ''),
+(1531468961, 'reegaae', 'grgrtg', 'grg', 'tgrgr', 'Lomba', '2018-07-28', '09:00:00', '2018-07-27', '09:09:00', 'Rp.1325', 1531132916, 1531133283, 544, 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -174,7 +195,7 @@ CREATE TABLE `user_ormawa` (
 --
 
 INSERT INTO `user_ormawa` (`nim`, `nama`, `jenis_kelamin`, `jabatan`, `id_ormawa`, `password`, `status`, `telp`, `id_role`) VALUES
-(544, 'Perciel', 'Laki-laki', 'admin', 1531133298, 'admin', 0, '34253466', 1),
+(544, 'Swal', 'Perempuan', 'admin', 1531133283, 'admin', 0, '34253466', 1),
 (435345, 'ismail', 'Laki-laki', 'admin', 1531133298, 'admin', 0, '986394632', 0),
 (23423523, 'aaa', 'Laki-laki', 'admin', 1531133283, 'admin', 0, '45346337', 0),
 (44353453, 'coba', 'Laki-laki', 'admin', 1, 'admin', 0, '45346337', 0),
@@ -184,6 +205,12 @@ INSERT INTO `user_ormawa` (`nim`, `nama`, `jenis_kelamin`, `jabatan`, `id_ormawa
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indexes for table `dpm`

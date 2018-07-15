@@ -41,7 +41,7 @@
 									<?= '
 									<button type="button" data-toggle="modal" data-placement="top" title="Detail" data-target="#ModalDetail" id="'.$niy.'|'.$nama.'|'.$jenis_kelamin.'|'.$password.'|'.$status.'|'.$telp.'|" class="btn btn-primary detail-pengguna"><i class="fa fa-info"></i></button>
 									';?>
-									<button class="btn btn-danger" type="button" data-toggle="modal" data-placement="top" title="Hapus" data-target="#modal-hapus" onclick="hapus_kemahasiswaan('<?= $niy?>')" ><i class="fa fa-trash"></i></button>
+									<button class="btn btn-danger" type="button" data-toggle="modal" data-placement="top" title="Hapus" data-target="#modal-hapus" onclick="hapus_kemahasiswaan('<?= $niy ?>')" ><i class="fa fa-trash"></i></button>
 								</td>
 							</tr>
 							<?php
