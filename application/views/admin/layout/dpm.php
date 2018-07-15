@@ -13,7 +13,7 @@
 					<table class="table table-bordered" id="data-tables">
 						<thead>
 							<tr class="bg-blue">
-								<th>No</th>
+								<th>NIM</th>
 								<th>Nama</th>
 								<th>Jabatan</th>
 								<th>Option</th>

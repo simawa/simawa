@@ -35,8 +35,7 @@ class Pengguna extends CI_Controller
 				'id_ormawa' => $this->input->post('id_ormawa'),
 				'password' => $this->input->post('password'),
 				'status' => $this->input->post('status'),
-				'telp' => $this->input->post('telp'),
-				'id_role' => $this->input->post('id_role')
+				'telp' => $this->input->post('telp')
 			);
 			//Simpan kedalam tabel user_ormawa
 			$this->db->insert('user_ormawa', $insert);
@@ -79,8 +78,7 @@ class Pengguna extends CI_Controller
 				'id_ormawa' => $this->input->post('id_ormawa'),
 				'password' => $this->input->post('password'),
 				'status' => $this->input->post('status'),
-				'telp' => $this->input->post('telp'),
-				'id_role' => $this->input->post('id_role')
+				'telp' => $this->input->post('telp')
 			);
 			//Simpan kedalam tabel user_ormawa
 			$this->db->update('user_ormawa', $update, $nim);

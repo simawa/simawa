@@ -222,7 +222,7 @@
 				</div>
 				<div class="modal-footer bg-blue">
 					<div class="btn-group btn-group-sm pull-right">
-						<button id="btn_hapus" name="btn_hapus" formaction="<?= base_url('admin/dpm/delete'); ?>" type="submit" class="btn btn-success ajax-loader">
+						<button id="btn_hapus" name="btn_hapus" formaction="<?= base_url('admin/kemahasiswaan/delete'); ?>" type="submit" class="btn btn-success ajax-loader">
 						<i class="fa fa-check"></i> Simpan
 						</button>
 						<button data-dismiss="modal" type="button" class="btn btn-danger" aria-label="Close">

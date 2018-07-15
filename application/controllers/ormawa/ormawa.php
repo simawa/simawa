@@ -29,7 +29,23 @@ class Ormawa extends CI_Controller
 		$this->form_validation->set_rules('rencana_dana','rencana_dana','required');
 
 		if ($this->form_validation->run()==TRUE) {
-			$insert = array(
+
+		$config['upload_path'] = './assets/file_upload/';
+        $config['allowed_types'] = 'doc|docx|pdf';
+        $config['max_size']  = '5000';
+        $config['max_width']  = '5000';
+        $config['max_height']  = '5000';
+        
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload("userfile")) {
+        	$data_upload = $this->upload->data();
+        	//Letak Folder Gambar
+        	$source = realpath('assets/file_upload/' . $data_upload['file_name']);
+        	// Permission Configuration
+            chmod($source, 0777);
+        	$insert = array(
 				'id' => time(),
 				'nama_kegiatan' => $this->input->post('nama_kegiatan'),
 				'tema_kegiatan' => $this->input->post('tema_kegiatan'),
@@ -42,10 +58,13 @@ class Ormawa extends CI_Controller
 				'jam2' => $this->input->post('jam2'),
 				'rencana_dana' => $this->input->post('rencana_dana'),
 				'id_tempat_kegiatan' => $this->input->post('id_tempat_kegiatan'),
+				'file_upload'       	=> $data_upload['file_name'],
 				'id_ormawa' => $this->input->post('id_ormawa'),
 				'id_user' => $this->input->post('id_user')
 			);
 			
+			// print_r($insert);
+			// die;
 			//Simpan kedalam tabel user_ormawa
 			$this->db->insert('pengajuan_kegiatan', $insert);
 			$this->session->set_flashdata('success_upload', "<script>
@@ -59,6 +78,19 @@ class Ormawa extends CI_Controller
 			</script>");
 			//redirect
 			redirect('ormawa/ormawa');
+        }else{
+        	$this->session->set_flashdata('error_upload', "<script>
+				swal({
+				  position: 'top-end',
+				  type: 'error',
+				  title: 'Data Gagal Disimpan',
+				  showConfirmButton: false,
+				  timer: 2000
+				})
+			</script>");
+			//redirect halaman
+	    redirect('ormawa/ormawa');
+        }			
 		}else{
 			$this->session->set_flashdata('error_upload', "<script>
 				swal({
