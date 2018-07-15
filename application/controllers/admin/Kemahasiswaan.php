@@ -105,6 +105,8 @@ class Kemahasiswaan extends CI_Controller
 	public function delete()
 	{
 		$niy['niy'] = $this->input->post('hapus_niy');
+		print_r($niy);
+		die;
 		$this->db->delete("kemahasiswaan", $niy);
 	    //deklarasi session flashdata
 	    $this->session->set_flashdata('success_upload', "<script>
