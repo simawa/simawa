@@ -44,6 +44,7 @@
 								$keterangan_kemahasiswaan = $row->keterangan_kemahasiswaan;
 								$nama_ormawa = $row->nama_ormawa;
 								$nama_pengguna = $row->nama_pengguna;
+								$upload_file = $row->file_upload;
 
 								
 								//Status Kemahasiswaan
@@ -67,9 +68,9 @@
 								}
 								?></td>
 								<td>
-									<button class="btn btn-success" type="button" data-toggle="modal" data-placement="top" title="Edit" data-target="#modal-edit" onclick="edit_pengajuan('<?= $id ?>','<?= $nama_kegiatan ?>','<?= $tema_kegiatan ?>','<?= $tujuan ?>','<?= $sasaran ?>','<?= $bentuk_kegiatan ?>','<?= $tgl1 ?>','<?= $jam1 ?>','<?= $tgl2 ?>','<?= $jam2 ?>','<?= $rencana_dana ?>','<?= $id_tempat_kegiatan ?>','<?= $id_ormawa ?>','<?= $id_user ?>')"><i class="fa fa-pencil"></i></button>
+									<button class="btn btn-success" type="button" data-toggle="modal" data-placement="top" title="Edit" data-target="#modal-edit" onclick="edit_pengajuan('<?= $id ?>','<?= $nama_kegiatan ?>','<?= $tema_kegiatan ?>','<?= $tujuan ?>','<?= $sasaran ?>','<?= $bentuk_kegiatan ?>','<?= $tgl1 ?>','<?= $jam1 ?>','<?= $tgl2 ?>','<?= $jam2 ?>','<?= $rencana_dana ?>','<?= $id_tempat_kegiatan ?>','<?= $upload_file;?>','<?= $id_ormawa ?>','<?= $id_user ?>')"><i class="fa fa-pencil"></i></button>
 									<?= '
-									<button class="btn btn-info detail-pengajuan" type="button" data-toggle="modal" data-placement="top" title="Detail" id="'.$id.'|'.$nama_kegiatan.'|'.$tema_kegiatan.'|'.$tujuan.'|'.$sasaran.'|'.$bentuk_kegiatan.'|'.$tgl1.'|'.$jam1.'|'.$tgl2.'|'.$jam2.'|'.$rencana_dana.'|'.$id_tempat_kegiatan.'|'.$nama_ormawa.'|'.$nama_pengguna.'|'.$status_dpm.'|'.$keterangan_dpm.'|'.$status_kemahasiswaan.'|'.$keterangan_kemahasiswaan.'" data-target="#modal-detail"><i class="fa fa-info"></i></button>
+									<button class="btn btn-info detail-pengajuan" type="button" data-toggle="modal" data-placement="top" title="Detail" id="'.$id.'|'.$nama_kegiatan.'|'.$tema_kegiatan.'|'.$tujuan.'|'.$sasaran.'|'.$bentuk_kegiatan.'|'.$tgl1.'|'.$jam1.'|'.$tgl2.'|'.$jam2.'|'.$rencana_dana.'|'.$id_tempat_kegiatan.'|'.$upload_file.'|'.$nama_ormawa.'|'.$nama_pengguna.'|'.$status_dpm.'|'.$keterangan_dpm.'|'.$status_kemahasiswaan.'|'.$keterangan_kemahasiswaan.'" data-target="#modal-detail"><i class="fa fa-info"></i></button>
 									';?>
 									<button class="btn btn-danger" type="button" data-toggle="modal" data-placement="top" title="Hapus" data-target="#modal-hapus" onclick="hapus_pengajuan('<?= $id ?>')"><i class="fa fa-trash"></i></button>
 								</td>
@@ -175,6 +176,12 @@
 									}
 									?>
 								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Upload File</label>
+							<div class="col-md-10 col-sm-10 col-xs-10">
+								<input type="file" class="form-control" name="userfile" readonly>
 							</div>
 						</div>
 						<div class="form-group">
@@ -394,13 +401,13 @@ $(document).ready(function() {
 		// bagian ini yang akan ditampilkan pada modal bootstrap
         // pengetikan HTML tidak boleh dienter, karena oleh javascript akan dibaca \r\n sehingga
         // modal bootstrap tidak akan jalan
-		$("#IsiModal").html('<table class="table table-responsive table-striped"><tbody><tr><th>ID Pengajuan</th><td> : '+datanya[0]+'</td></tr><tr><th>Nama Kegiatan</th><td> : '+datanya[1]+'</td></tr><tr><th>Tema Kegiatan</th><td> : '+datanya[2]+'</td></tr><tr><th>Tujuan</th><td> : '+datanya[3]+'</td></tr><tr><th>Sasaran</th><td> : '+datanya[4]+'</td></tr><tr><th>Bentuk Kegiatan</th><td> : '+datanya[5]+'</td></tr><tr><th>Tanggal #1</th><td> : '+datanya[6]+'</td></tr><tr><th>Jam #1</th><td> : '+datanya[7]+' Wib </td></tr><tr><th>Tanggal #2</th><td> : '+datanya[8]+'</td></tr><tr><th>Jam #2</th><td> : '+datanya[9]+' Wib </td></tr><tr><th>Rencana Dana </th><td> : '+datanya[10]+'</td></tr><tr><th>Tempat Kegiatan</th><td> : '+datanya[11]+'</td></tr><tr><th>Nama Ormawa</th><td> : '+datanya[12]+'</td></tr><tr><th>Nama Pengguna</th><td> : '+datanya[13]+'</td></tr><tr><th>Status DPM</th><td> : '+datanya[14]+'</td></tr><tr><th>Keterangan DPM</th><td> : '+datanya[15]+'</td></tr><tr><th>Status Kemahasiswaan</th><td> : '+datanya[16]+'</td></tr><tr><th>Keterangan Kemahasiswaan</th><td> : '+datanya[17]+'</td></tr></tbody></table>');
+		$("#IsiModal").html('<table class="table table-responsive table-striped"><tbody><tr><th>ID Pengajuan</th><td> : '+datanya[0]+'</td></tr><tr><th>Nama Kegiatan</th><td> : '+datanya[1]+'</td></tr><tr><th>Tema Kegiatan</th><td> : '+datanya[2]+'</td></tr><tr><th>Tujuan</th><td> : '+datanya[3]+'</td></tr><tr><th>Sasaran</th><td> : '+datanya[4]+'</td></tr><tr><th>Bentuk Kegiatan</th><td> : '+datanya[5]+'</td></tr><tr><th>Tanggal #1</th><td> : '+datanya[6]+'</td></tr><tr><th>Jam #1</th><td> : '+datanya[7]+' Wib </td></tr><tr><th>Tanggal #2</th><td> : '+datanya[8]+'</td></tr><tr><th>Jam #2</th><td> : '+datanya[9]+' Wib </td></tr><tr><th>Rencana Dana </th><td> : '+datanya[10]+'</td></tr><tr><th>Tempat Kegiatan</th><td> : '+datanya[11]+'</td></tr><tr><th>File Upload</th><td> : '+datanya[12]+'</td></tr><tr><th>Nama Ormawa</th><td> : '+datanya[13]+'</td></tr><tr><th>Nama Pengguna</th><td> : '+datanya[14]+'</td></tr><tr><th>Status DPM</th><td> : '+datanya[15]+'</td></tr><tr><th>Keterangan DPM</th><td> : '+datanya[16]+'</td></tr><tr><th>Status Kemahasiswaan</th><td> : '+datanya[17]+'</td></tr><tr><th>Keterangan Kemahasiswaan</th><td> : '+datanya[17]+'</td></tr></tbody></table>');
 		});
 	
 	});
 </script>
 <script>
-		function edit_pengajuan(a,b,c,d,e,f,g,h,i,j,k,l,m,n) {
+		function edit_pengajuan(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o) {
 			$('#edit_id').val(a);
 			$('#edit_nama_kegiatan').val(b);
 			$('#edit_tema_kegiatan').val(c);

@@ -147,16 +147,6 @@
 								<input type="text" class="form-control" name="telp" required="">
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Jenis Pengguna</label>
-							<div class="col-md-10 col-sm-10 col-xs-10">
-								<select name="id_role" class="form-control" required="">
-									<option value=""></option>
-									<option value="0">Dpm</option>
-									<option value="1">Kemahasiswaan</option>
-								</select>
-							</div>
-						</div>
 					</div>
 					<div class="box-footer">
 						<div class="btn-group btn-group-sm pull-right">
@@ -249,16 +239,6 @@
 							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Telp</label>
 							<div class="col-md-10 col-sm-10 col-xs-10">
 								<input type="text" class="form-control" name="telp" id="edit_telp" required="">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Jenis Pengguna</label>
-							<div class="col-md-10 col-sm-10 col-xs-10">
-								<select name="id_role" id="edit_role" class="form-control" required="">
-									<option value=""></option>
-									<option value="0">Dpm</option>
-									<option value="1">Kemahasiswaan</option>
-								</select>
 							</div>
 						</div>
 					</div>

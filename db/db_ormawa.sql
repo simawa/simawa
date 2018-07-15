@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jul 13, 2018 at 02:52 PM
+=======
+-- Generation Time: Jul 15, 2018 at 03:56 AM
+>>>>>>> 9d5231356bc72bc0a21110bff88bae1f186296a4
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -62,7 +66,7 @@ CREATE TABLE `dpm` (
 --
 
 INSERT INTO `dpm` (`nim`, `nama`, `jenis_kelamin`, `jabatan`, `password`, `status`, `telp`, `role_id`) VALUES
-(5345346, 'admin', 'Laki-laki', 'admin', 'admin', 0, '45346337', 0);
+(12345, 'admin', 'Laki-laki', 'admin', 'admin', 0, '45346337', 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +89,6 @@ CREATE TABLE `kemahasiswaan` (
 --
 
 INSERT INTO `kemahasiswaan` (`niy`, `nama`, `jenis_kelamin`, `password`, `status`, `telp`, `role_id`) VALUES
-(353645675, 'Percil', 'Laki-laki', 'admin', 0, '093673982', 0),
 (2147483647, 'admin', 'Laki-laki', 'admin', 0, '53546475', 0);
 
 -- --------------------------------------------------------
@@ -129,18 +132,26 @@ CREATE TABLE `pengajuan_kegiatan` (
   `id_ormawa` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `status_dpm` int(2) NOT NULL,
-  `keterangan_dpm` text NOT NULL,
+  `keterangan_dpm` text,
   `status_kemahasiswaan` int(2) NOT NULL,
-  `keterangan_kemahasiswaan` text NOT NULL
+  `keterangan_kemahasiswaan` text,
+  `file_upload` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `pengajuan_kegiatan`
 --
 
+<<<<<<< HEAD
 INSERT INTO `pengajuan_kegiatan` (`id`, `nama_kegiatan`, `tema_kegiatan`, `tujuan`, `sasaran`, `bentuk_kegiatan`, `tgl1`, `jam1`, `tgl2`, `jam2`, `rencana_dana`, `id_tempat_kegiatan`, `id_ormawa`, `id_user`, `status_dpm`, `keterangan_dpm`, `status_kemahasiswaan`, `keterangan_kemahasiswaan`) VALUES
 (1531468809, 'Shalat Ied & Qurban', 'Religi', 'Sebagai Syiar Islam', 'Mahasiswa dan Masyarakat Sekitar', 'Seminar', '2018-07-29', '07:00:00', '2018-07-31', '09:00:00', 'Rp.13252134', 1531132916, 1531133298, 544, 0, '', 0, ''),
 (1531468961, 'reegaae', 'grgrtg', 'grg', 'tgrgr', 'Lomba', '2018-07-28', '09:00:00', '2018-07-27', '09:09:00', 'Rp.1325', 1531132916, 1531133283, 544, 0, '', 0, '');
+=======
+INSERT INTO `pengajuan_kegiatan` (`id`, `nama_kegiatan`, `tema_kegiatan`, `tujuan`, `sasaran`, `bentuk_kegiatan`, `tgl1`, `jam1`, `tgl2`, `jam2`, `rencana_dana`, `id_tempat_kegiatan`, `id_ormawa`, `id_user`, `status_dpm`, `keterangan_dpm`, `status_kemahasiswaan`, `keterangan_kemahasiswaan`, `file_upload`) VALUES
+(1531535365, 'Baksos', 'asdasgag', 'aisiau', 'aiufgiuafius', 'Seminar', '2019-04-02', '01:05:00', '2018-11-03', '02:04:00', 'Rp.1325', 1531132916, 1531133283, 544, 0, '', 0, '', ''),
+(1531536760, 'gekgerjg', 'sodnosgno', 'nsodnvornv', 'qoonovno', 'Workshop', '2019-03-02', '23:59:00', '2019-02-02', '02:03:00', 'Rp.1325', 1531132916, 1531133283, 544, 0, NULL, 0, NULL, ''),
+(1531618062, 'vsv', 'svvdf', 'vfvdfv', 'dvdv', 'Lomba', '2018-07-21', '12:12:00', '2018-07-22', '12:01:00', '344564', 1531132916, 1531133283, 544, 0, NULL, 0, NULL, 'EFEKTIVITAS_BLENDED_LEARNINGMENGGUNAKAN_APLIKASI_TELEGRAM1.pdf');
+>>>>>>> 9d5231356bc72bc0a21110bff88bae1f186296a4
 
 -- --------------------------------------------------------
 
@@ -187,7 +198,7 @@ CREATE TABLE `user_ormawa` (
   `password` varchar(30) NOT NULL,
   `status` int(2) NOT NULL,
   `telp` varchar(15) NOT NULL,
-  `id_role` int(11) NOT NULL
+  `id_role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -195,7 +206,11 @@ CREATE TABLE `user_ormawa` (
 --
 
 INSERT INTO `user_ormawa` (`nim`, `nama`, `jenis_kelamin`, `jabatan`, `id_ormawa`, `password`, `status`, `telp`, `id_role`) VALUES
+<<<<<<< HEAD
 (544, 'Swal', 'Perempuan', 'admin', 1531133283, 'admin', 0, '34253466', 1),
+=======
+(544, 'Teh Javana', 'Perempuan', 'admin', 1531133283, 'admin', 0, '34253466', 1),
+>>>>>>> 9d5231356bc72bc0a21110bff88bae1f186296a4
 (435345, 'ismail', 'Laki-laki', 'admin', 1531133298, 'admin', 0, '986394632', 0),
 (23423523, 'aaa', 'Laki-laki', 'admin', 1531133283, 'admin', 0, '45346337', 0),
 (44353453, 'coba', 'Laki-laki', 'admin', 1, 'admin', 0, '45346337', 0),
